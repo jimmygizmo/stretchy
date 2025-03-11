@@ -1,0 +1,54 @@
+
+The following setup instructions mostly benefit you in enabling your IDE to properly analyze your code in the context
+of all the libraries and thus operate correctly and provide you with maximum value from the IDE features. These
+installations are not for your deployed builds, but can be used for running locally for development purposes in some
+modes, especially "dev server" modes. NOTE you should also be running/testing in container-integrated mode locally,
+so you are testing how the app runs in the container before pushing code or images. But our conerns here are for the
+IDE and how it works while you code mostly. Also, you might want to run some local static analysis tools or other
+tools related to development and testing. All of those needs will be covered by the Python (Pyenv) Virtual Environment
+we create here, called "ve.stretchy".
+NOTE that we will install stuff in multiple steps, for different reasons and from multiple requirements.txt files.
+While some dependencies will only exist in specific containers like "rpagent" vs. "stretchyagent", in our dev environ
+we lump them all together. Rarely does this create any conflict, specifically since we have declared ONE version of
+Python (3.10.9) will be used everywhere in the project. NOTE that where we ues Ubuntu 22.04, this also bring with it
+Python 3.10, so we are consistent everywhere with our versions as much as possible. In this spririt, we will lock
+down (pin) the versions of Python dependencies in requirements-pinned.txt files.
+
+COMPLETE PYTHON ENVIRONMENT SETUP FOR THE ENTIRE PROJECT - FOR MAXIMUM IDE AND LOCAL DEV-SERVER PERFORMANCE
+
+(Technically not required for building and deploying the actual application components. This is about development.)
+
+
+1. use pyenv. install Python 3.10.9 (preferred). Create Pyenv Virtualenv "ve.stretchy" using 3.10.9
+
+
+2. There is a .python-version file in the root of this project which will activate the venv "ve.stretchy"
+
+
+3. Do the baseline installer/setup tool install/upgrades first:
+
+pip install --upgrade pip
+
+pip install --upgrade setuptools
+
+pip install --upgrade wheel
+
+
+4. Install the project dependencies for "rpagent". Do this from the project root directory.
+
+pip install -r ./rpagent/builder/requirements.txt
+
+
+5. Repeat this for "stretchyagent"
+
+pip install -r ./stretchyagent/builder/requirements.txt
+
+
+6. Finally, repeat this again for the general project-level requirements to enhance static code analysis and more:
+
+pip install -r ./requirements.txt
+
+
+##
+#
+

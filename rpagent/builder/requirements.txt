@@ -1,0 +1,9 @@
+# RPAGENT requirements.txt
+
+
+runpod~=1.7.0
+
+
+##
+#
+

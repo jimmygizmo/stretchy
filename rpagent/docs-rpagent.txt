@@ -1,0 +1,43 @@
+
+RunPod Worker Collection Home (many repos)
+
+
+RunPod Mock Worker Repo:
+https://github.com/runpod-workers/mock-worker
+* This appears to be the simples prototype.
+
+
+RunPod Mock Worker Docker Hub Image: (Linked from the repo home page)
+https://hub.docker.com/r/runpod/mock-worker
+
+
+
+############################################# ENV VARIABLES:
+
+MOCK_RETURN - simple string return value
+
+
+MOCK_DELAY
+The number of seconds to wait before returning output, raising error or crashing. If generator is enabled,
+this is the delay between each yeild.
+
+MOCK_PROGRESS - TODO: clarify
+A LIST of mock progress updates (STRINGS) to send back to the RunPod API.
+
+
+MOCK_ERROR - TODO: clarify
+
+MOCK_CRASH - TODO: clarify
+
+MOCK_REFRESH - TODO: clarify
+
+
+
+MOCK_EXTERNAL - TODO: clarify
+
+CONCURRENCY_MODIFIER - TODO: clarify
+
+
+log = RunPodLogger()
+
+

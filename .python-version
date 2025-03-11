@@ -1,0 +1,9 @@
+ve.stretchy
+
+# Based on Python 3.10.9 because this Python version matches that in an Ubuntu image used in this project and
+# other factors that have chosen 3.10 as the Python version. This is the closest match to our dependencies in general.
+
+
+##
+#
+

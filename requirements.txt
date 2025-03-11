@@ -1,0 +1,17 @@
+# PROJECT ROOT requirements.txt
+
+
+# MyPy is simply a nice-to-have. It will help you implement Type Hinting everywhere in you Python code.
+# You can run it on the command line during coding and/or before commits. Also, your IDE may leverage it and
+# provide you with additional real-time type-hinting-related analysis and suggestions.
+mypy
+
+
+# NOTES: Stretchy client in the root of the project uses the following but I believe these are all in the standard lib:
+# requests, time, random, logging
+# If the client "stretchy.py" needs any additional dependency installations, they would be listed here.
+
+
+##
+#
+
