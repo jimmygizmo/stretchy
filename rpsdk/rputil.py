@@ -1,14 +1,105 @@
+#! /usr/bin/env python
 
 import os
 from dotenv import load_dotenv
 import runpod
+# I noticed that runpod.erroor needs to be imported independently. Possibly, the runpod module needs a small fix.
+import runpod.error
+# NOTE: Simply using "import runpod" SHOULD work for runpod.error, but the runpod module's __init__.py might need
+# adjustment or a correct __all__ list. NOTE: My IDE is inconsistently showing the "import runpod" as used and not
+# used, so something is incorrect in the __init__.py or elsewhere I suspect.
+import json
 
-
-# This will find the first .env file, moving up the directories.
-# The .env file will be at the project root, where it is protected from repo-addition by .gitignore
 load_dotenv()
+# This load_dotenv() will find the first .env file, moving up the directories.
+# The .env file will be at the project root, where it is protected from repo-addition by .gitignore
+
+# runpod_api_key = os.getenv("RUNPOD_API_KEY")
+runpod_api_key = os.getenv("STRETCHYKEY")
+# print(runpod_api_key)
+
+runpod.api_key = runpod_api_key
 
 
-runpod_api_key = os.getenv("RUNPOD_API_KEY")
-print(runpod_api_key)
+################  FETCH ALL ENDPOINTS  ################
+endpoints = runpod.get_endpoints()
+print(endpoints)
+
+
+################  FETCH ALL AVAILABLE GPUs  ################
+gpus = runpod.get_gpus()
+print(json.dumps(gpus, indent=2))
+
+
+################  CREATE TEMPLATE  ################
+try:
+    new_template = runpod.create_template(
+        name="stretchy-rputil-test--template-1",
+        image_name="runpod/base:0.1.0",
+    )
+    print(new_template)
+    # RETURN FOR SUCCESSFUL TEMPLATE CREATION
+    # {
+    #     'id': 'bdbtve7cas',
+    #     'name': 'stretchy-rputil-test',
+    #     'imageName': 'runpod/base:0.1.0',
+    #     'dockerArgs': '',
+    #     'containerDiskInGb': 10,
+    #     'volumeInGb': 0,
+    #     'volumeMountPath': '/workspace',
+    #     'ports': '',
+    #     'env': [],
+    #     'isServerless': False,
+    # }
+
+except runpod.error.QueryError as err:
+    print(err)
+    print(err.query)
+
+
+################  CREATE TEMPLATE AND ENDPOINT  ################
+try:
+    new_template = runpod.create_template(
+        name="stretchy-rputil-test--template-2",
+        image_name="runpod/base:0.6.2-cuda12.4.1",
+        is_serverless=True,
+    )
+    print(new_template)
+
+    new_endpoint = runpod.create_endpoint(
+        name="stretchy-rputil-test--endpoint-1",
+        template_id=new_template["id"],
+        gpu_ids="AMPERE_16",
+        workers_min=0,
+        workers_max=1,
+    )
+    print(new_endpoint)
+
+except runpod.error.QueryError as err:
+    print(err)
+    print(err.query)
+
+
+################  GET GPUs BY ID  ################
+gpus = runpod.get_gpu("NVIDIA A100 80GB PCIe")
+print(json.dumps(gpus, indent=2))
+
+gpus = runpod.get_gpu("NVIDIA L40")
+print(json.dumps(gpus, indent=2))
+
+gpus = runpod.get_gpu("NVIDIA L40S")
+print(json.dumps(gpus, indent=2))
+
+gpus = runpod.get_gpu("NVIDIA GeForce RTX 4090")
+print(json.dumps(gpus, indent=2))
+
+
+
+
+
+
+
+
+##
+#
 
