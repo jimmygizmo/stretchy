@@ -10,6 +10,7 @@ echo "################################"
 echo
 
 docker build -t docker.io/jimmygizmo/gizmorepo:stretchy-rpagent rpagent
+echo
 
 
 ##

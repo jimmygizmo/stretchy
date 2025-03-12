@@ -1,0 +1,34 @@
+# Base image
+
+# TODO: NOTE: The basic Dockerfile in place for stretchyagent is working fine. There is some good stuff in this one
+#    we can adapt later.
+
+FROM ubuntu:22.04
+
+ENV DEBIAN_FRONTEND=noninteractive
+
+# Use bash shell with pipefail option
+SHELL ["/bin/bash", "-o", "pipefail", "-c"]
+
+# Set the working directory
+WORKDIR /
+
+# Update and upgrade the system packages (Worker Template)
+COPY builder/setup-ubuntu-python-env.sh /setup-ubuntu-python-env.sh
+RUN /bin/bash /setup-ubuntu-python-env.sh && rm /setup-ubuntu-python-env.sh
+
+# Install Python dependencies (Worker Template)
+COPY builder/requirements.txt /requirements.txt
+RUN python -m pip install --upgrade pip && \
+    python -m pip install --upgrade -r /requirements.txt --no-cache-dir && \
+    rm /requirements.txt
+
+# Add src files (Worker Template)
+ADD src .
+
+CMD python -u /stretchyagent.py
+
+
+##
+#
+

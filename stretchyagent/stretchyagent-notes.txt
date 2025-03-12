@@ -1,0 +1,12 @@
+
+
+# RESPONSE EXAMPLE:
+
+{
+    "status": "success",
+    "cpu_load": 50,
+    "io_load": 0,
+    "network_latency": 0,
+    "database_queries": 0
+}
+

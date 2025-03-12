@@ -3,8 +3,10 @@
 # THIS SCRIPT MUST BE RUN FROM THE PROJECT ROOT DIRECTORY.
 
 
-echo "- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -"
+echo "- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -"
 echo "BUILD ALL"
+echo
+
 
 echo "---->  ./auto/build-010-full-project--build-all.sh"
 

@@ -10,6 +10,7 @@ echo "################################"
 echo
 
 docker build -t docker.io/jimmygizmo/gizmorepo:stretchy-stretchyagent stretchyagent
+echo
 
 
 ##

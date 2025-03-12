@@ -10,6 +10,7 @@ echo
 
 printf "\n############################################################\n"
 printf "\nCOPYING SECRETS FOR STETCHYAGENT\n"
+echo
 
 
 # Secret (like an API key) for "rpagent"

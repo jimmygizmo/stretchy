@@ -1,28 +1,33 @@
-# Base image
-FROM ubuntu:22.04
 
-ENV DEBIAN_FRONTEND=noninteractive
+FROM python:3.10-slim
 
-# Use bash shell with pipefail option
-SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
-# Set the working directory
-WORKDIR /
+WORKDIR /app
 
-# Update and upgrade the system packages (Worker Template)
-COPY builder/setup-ubuntu-python-env.sh /setup-ubuntu-python-env.sh
-RUN /bin/bash /setup-ubuntu-python-env.sh && rm /setup-ubuntu-python-env.sh
+# Copy the app src code into the container workdir
+COPY src /app
 
-# Install Python dependencies (Worker Template)
-COPY builder/requirements.txt /requirements.txt
-RUN python -m pip install --upgrade pip && \
-    python -m pip install --upgrade -r /requirements.txt --no-cache-dir && \
-    rm /requirements.txt
+# Upgrade pip to the latest version
+RUN pip install --upgrade pip
 
-# Add src files (Worker Template)
-ADD src .
+# Install any required Python dependencies
+RUN pip install flask
 
-CMD python -u /stretchyagent.py
+# Expose port 5000 (the default port for Flask)
+EXPOSE 5000
+
+# Set environment variable for Flask to run in production
+ENV FLASK_APP=stretchyagent.py
+ENV FLASK_RUN_HOST=0.0.0.0
+
+# If gunicorn will be used
+# RUN pip install gunicorn
+
+# Command to run the Flask application when the container starts (without gunicorn)
+CMD ["flask", "run"]
+
+# If guncorn used
+#CMD ["gunicorn", "-b", "0.0.0.0:5000", "stretchyapp:app"]
 
 
 ##

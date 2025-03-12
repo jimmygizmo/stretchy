@@ -61,12 +61,19 @@ def stress():
     db_threads = []
 
     # Simulate CPU load in parallel processes
+    # NOTE: This is the only load simulator that uses multiprocessing instead of threads. Threads are not ideal for
+    # CPU-bound tasks because of the GIL which prevents multiple threads from executing Python bytecode in parallel
+    # on multiple CPU cores. Since we uses PROCESSES and not THREADS here, we get to spawn on other CPU cores, hence
+    # loading the system; thus bypassing the GIL. This enabled true CPU parallelism.
     for _ in range(cpu_load):
         process = multiprocessing.Process(target=stress_cpu, args=(cpu_load,))
         process.start()
         cpu_processes.append(process)
 
     # Simulate IO load in parallel threads
+    # Python threads can be used for I/O-bound tasks since they don't need to execute Python bytecode while waiting
+    # for I/O to complete. Since the task mostly waits for external resources, threading is a good fit here because
+    # it allows other tasks to run while waiting for the I/O operation to complete.
     for _ in range(io_load):
         thread = threading.Thread(target=stress_io, args=(io_load,))
         thread.start()

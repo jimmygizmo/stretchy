@@ -3,7 +3,7 @@
 # THIS SCRIPT MUST BE RUN FROM THE PROJECT ROOT DIRECTORY.
 
 
-echo "- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -"
+echo "- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -"
 echo "PUSH ALL"
 echo
 
