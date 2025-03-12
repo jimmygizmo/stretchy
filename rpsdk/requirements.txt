@@ -1,0 +1,17 @@
+# RPSDK miscellaneous utilities, tools and experimental code - requirements.txt
+
+
+# "runpod" could be listed here but it is installed by RPAGENT as runpod~=1.7.0
+# For now I will just use that one. Each subproject in this STRETCHY project has its
+# own requirements.txt file for the time being. There is also a project/root-level one and
+# I'm undecided as to how to combine or use those. For now I like keeping the dependencies
+# separate as this is till a very free-form and experimental/exploratory project.
+
+
+python-dotenv
+# NOTE: Looks like another reqs file already got us python-dotenv.
+# This goes in line with my comments above. At a later point, I will consolidate the reqs files.
+
+##
+#
+

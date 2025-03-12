@@ -1,8 +1,8 @@
 
-
+.env
+# Actually it looks like .env must be included below in the default entries from the GitHub template. Yes. Found it.
 
 .idea/
-
 
 
 nogit/*

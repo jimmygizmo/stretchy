@@ -1,0 +1,26 @@
+
+https://docs.runpod.io/sdks/python/overview
+
+EXAMPLE OF HOW TO TAKE THE API KEY FROM THE ENV AND SET IT FOR THE RUNPOD LIB (SDK)
+
+import runpod
+import os
+
+runpod.api_key = os.getenv("RUNPOD_API_KEY")
+
+-----------------------------------------
+
+https://docs.runpod.io/sdks/python/apis
+
+
+import runpod
+import os
+
+runpod.api_key = os.getenv("RUNPOD_API_KEY")
+
+# Fetching all available endpoints
+endpoints = runpod.get_endpoints()
+
+# Displaying the list of endpoints
+print(endpoints)
+

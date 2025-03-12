@@ -1,0 +1,27 @@
+#### EXAMPLE .env FILE ####
+# MAKE ONE OF THESE FILES AT YOUR PROJECT ROOT. USE IT FOR PROJECT CONFIGURATION FOR DEV, OR POSSIBLE OTHER ENVS.
+###########################
+
+
+RUNPOD_API_KEY="abc123def456ghi789jkl"
+
+
+##
+#
+
+
+# This file is used by python-dotenv and can be used by a Javascript ecosystem and other facilities as well.
+# Python-dotenv can search UP the directory structure for a .env file and so it is best to keep this at the project
+# root. Always make sure your .gitignore will KEEP THIS FILE OUT OF THE REPOSITORY. This is where you will configure
+# your secrets and other sensitive data for your applications. Mostly this is relevant here in the development context
+# but you could also use this same file as part of your entire pipeline and this file could also store production
+# values. In that case you would be doing environment-detection. There are many strategies. For proper security,
+# however, this file is best used for non-production environments. In production, likely in a cloud, you should
+# use the most secure method that cloud provides, which might also leverage environment variables, but they will be
+# secured in a vault service or the equivalent and there will be secure (non-plain text and non-host-resident) methods
+# of configuring your applications.
+
+
+##
+#
+

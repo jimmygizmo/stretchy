@@ -44,7 +44,12 @@ pip install -r ./rpagent/builder/requirements.txt
 pip install -r ./stretchyagent/builder/requirements.txt
 
 
-6. Finally, repeat this again for the general project-level requirements to enhance static code analysis and more:
+6. Repeat this for "rpsdk"
+
+pip install -r ./rpsdk/builder/requirements.txt
+
+
+7. Finally, repeat this again for the general project-level requirements to enhance static code analysis and more:
 
 pip install -r ./requirements.txt
 
