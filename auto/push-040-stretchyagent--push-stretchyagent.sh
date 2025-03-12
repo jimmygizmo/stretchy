@@ -9,7 +9,7 @@ echo "################################"
 echo
 
 
-docker push ACCOUNT--ID.hub.docker.io/jimmygizmo:stretchy-stretchyagent
+docker push docker.io/jimmygizmo/gizmorepo:stretchy-stretchyagent
 
 
 ##

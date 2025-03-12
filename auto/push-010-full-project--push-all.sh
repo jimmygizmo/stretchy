@@ -10,7 +10,7 @@ echo "---->  ./auto/push-010-full-project--push-all.sh"
 
 
 # AWS ecr get login password and docker login.
-./auto/push-020-docker-aws-ecr-auth--docker-login.sh
+#./auto/push-020-docker-aws-ecr-auth--docker-login.sh
 
 sleep 1
 
@@ -18,7 +18,7 @@ sleep 1
 ./auto/push-030-rpagent--push-rpagent.sh
 
 
-./auto/push-040-stretchyagent--push-stretchyagent.sh
+#./auto/push-040-stretchyagent--push-stretchyagent.sh
 
 
 ##

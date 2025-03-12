@@ -10,8 +10,8 @@ SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 WORKDIR /
 
 # Update and upgrade the system packages (Worker Template)
-COPY builder/setup.sh /setup.sh
-RUN /bin/bash /setup.sh && rm /setup.sh
+COPY builder/setup-ubuntu-python-env.sh /setup-ubuntu-python-env.sh
+RUN /bin/bash /setup-ubuntu-python-env.sh && rm /setup-ubuntu-python-env.sh
 
 # Install Python dependencies (Worker Template)
 COPY builder/requirements.txt /requirements.txt

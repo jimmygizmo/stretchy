@@ -1,9 +1,20 @@
 
+
+
 .idea/
+
+
 
 nogit/*
 !nogit/.gitkeep
 
+
+# This may get copied into place during builds, but we don't want it accidentally added to the repo as a result.
+rpagent/secret-rpagent.txt
+
+
+# This may get copied into place during builds, but we don't want it accidentally added to the repo as a result.
+stretchyagent/secret-stretchyagent.txt
 
 
 

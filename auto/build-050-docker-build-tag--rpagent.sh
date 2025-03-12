@@ -9,7 +9,7 @@ date
 echo "################################"
 echo
 
-docker build -t ACCOUNT--ID.hub.docker.io/jimmygizmo:stretchy-rpagent rpagent
+docker build -t docker.io/jimmygizmo/gizmorepo:stretchy-rpagent rpagent
 
 
 ##
