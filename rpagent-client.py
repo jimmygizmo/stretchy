@@ -10,6 +10,7 @@ runpod.api_key = runpod_api_key
 
 endpoint = runpod.Endpoint("2iuy5wqxgh0xvb")  # The dynamically-generated ID, from the time of endpoint creation
 
+
 # ################  CHECK HEALTH ################
 try:
     run_request = endpoint.health(timeout=60)
@@ -26,8 +27,8 @@ try:
         },
         timeout=60,  # Timeout in seconds.
     )
-
     print(run_request)
+
 except TimeoutError:
     print("Job timed out.")
 
@@ -38,6 +39,7 @@ input_payload = {
 }
 
 run_request = endpoint.run(input_payload)
+print(run_request)
 
 # Initial check without blocking, useful for quick tasks
 status = run_request.status()

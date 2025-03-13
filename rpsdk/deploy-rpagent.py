@@ -14,6 +14,9 @@ load_dotenv()
 runpod_api_key = os.getenv("STRETCHYKEY")
 runpod.api_key = runpod_api_key
 
+env_dict = {
+    "MOCK_RETURN": "This is the mock return value. This will be the job output.",
+}
 
 try:
     new_template = runpod.create_template(
@@ -21,6 +24,7 @@ try:
         image_name="docker.io/jimmygizmo/gizmorepo:stretchy-rpagent",
         # image_name="docker.io/jimmygizmo/gizmorepo:stretchy-stretchyagent",
         is_serverless=True,
+        env=env_dict,
     )
     print(new_template)
     # SEE ABOVE FOR EXAMPLE RETURN
