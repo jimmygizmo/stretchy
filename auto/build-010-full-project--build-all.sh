@@ -17,6 +17,11 @@ echo "---->  PREPARING TO BUILD RPAGENT"
 
 
 echo
+echo "---->  PREPARING TO BUILD STABLED"
+./auto/build-034-prep-docker-build--stabled.sh
+
+
+echo
 echo "---->  PREPARING TO BUILD STETCHYAGENT"
 ./auto/build-040-prep-docker-build--stretchyagent.sh
 
@@ -24,6 +29,11 @@ echo "---->  PREPARING TO BUILD STETCHYAGENT"
 echo
 echo "---->  BUILDING + TAGGING RPAGENT"
 ./auto/build-050-docker-build-tag--rpagent.sh
+
+
+echo
+echo "---->  BUILDING + TAGGING STABLED"
+./auto/build-054-docker-build-tag--stabled.sh
 
 
 echo

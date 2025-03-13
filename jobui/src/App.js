@@ -1,6 +1,8 @@
+
 import React, { useState } from 'react';
 import axios from 'axios';
 import './App.css'; // We'll add custom styles for the dark theme
+
 
 function App() {
   const [prompt, setPrompt] = useState('');
@@ -25,6 +27,7 @@ function App() {
     }
   };
 
+
   const pollJobStatus = async (jobId) => {
     try {
       let jobComplete = false;
@@ -41,6 +44,7 @@ function App() {
       console.error('Error polling job status:', error);
     }
   };
+
 
   return (
     <div className="App">
@@ -61,6 +65,7 @@ function App() {
     </div>
   );
 }
+
 
 export default App;
 

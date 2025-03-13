@@ -29,12 +29,22 @@ try:
     print(new_template)
     # SEE ABOVE FOR EXAMPLE RETURN
 
+    # https://docs.runpod.io/serverless/references/endpoint-configurations
+    # QUEUE_DELAY    scaling strategy adjusts worker numbers based on request wait times. With zero workers initially,
+    # the first request adds one worker. Subsequent requests add workers only after waiting in the queue for the
+    # defined number of delay seconds.
+    # REQUEST_COUNT    scaling strategy adjusts worker numbers according to total requests in the queue and in progress.
+    # It automatically adds workers as the number of requests increases, ensuring tasks are handled efficiently.
     new_endpoint = runpod.create_endpoint(
         name="stretchy-rpagent--endpoint-p1",
         template_id=new_template["id"],
         gpu_ids="AMPERE_16",
-        workers_min=0,
-        workers_max=1,
+        # scaler_type="QUEUE_DELAY",
+        # scaler_value=2,
+        scaler_type="REQUEST_COUNT",
+        scaler_value=2,
+        workers_min=3,
+        workers_max=20,
     )
     print(new_endpoint)
 

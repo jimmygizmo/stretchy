@@ -22,6 +22,11 @@ echo "---->  PUSHING RPAGENT"
 echo
 
 
+echo "---->  PUSHING STABLED"
+./auto/push-030-stabled--push-stabled.sh
+echo
+
+
 echo "---->  PUSHING STETCHYAGENT"
 ./auto/push-040-stretchyagent--push-stretchyagent.sh
 echo

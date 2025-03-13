@@ -50,6 +50,7 @@ async def start_job(request: JobRequest):
 
     return {"job_id": job_id}
 
+
 async def run_job(job_id: str, prompt: str):
     # Simulate a third-party LLM API call
     result = simulate_llm_api(prompt)
