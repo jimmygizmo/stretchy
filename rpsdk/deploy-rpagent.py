@@ -48,7 +48,7 @@ print(endpoints)
 ##
 #
 
-# TODO: REFORMAT THIS. EXAMPLE OF SUCCESSFUL CREATION OF TEMPLATE THEN OF ENDPOINT:
+# TODO: REFORMAT THIS. EXAMPLE OF SUCCESSFUL CREATION OF TEMPLATE, THEN OF ENDPOINT:
 # {'id': '0jjdc1vdne', 'name': 'stretchy-rpagent--template-p1', 'imageName': 'docker.io/jimmygizmo/gizmorepo:stretchy-stretchyagent', 'dockerArgs': '', 'containerDiskInGb': 10, 'volumeInGb': 0, 'volumeMountPath': '/workspace', 'ports': '', 'env': [], 'isServerless': True}
 # {'id': 'norx0cd12ei4ap', 'name': 'stretchy-rpagent--endpoint-p1', 'templateId': '0jjdc1vdne', 'gpuIds': 'AMPERE_16', 'networkVolumeId': None, 'locations': None, 'idleTimeout': 5, 'scalerType': 'QUEUE_DELAY', 'scalerValue': 4, 'workersMin': 0, 'workersMax': 1}
 
