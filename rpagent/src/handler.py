@@ -1,5 +1,6 @@
 
 import os
+from dotenv import load_dotenv
 import sys
 import time
 import asyncio
@@ -119,7 +120,7 @@ def _side_effects(job):
 
     mock_external = job_input.get('mock_external', MOCK_EXTERNAL_DEFAULT)
     if mock_external.get('error_job_return', False):
-        rp_http.JOB_DONE_URL = 'http://not_found'
+        rp_http.JOB_DONE_URL = 'https://smartmetal.ai/dev'
 
     return job_input
 

@@ -10,6 +10,12 @@ import runpod.error
 # used, so something is incorrect in the __init__.py or elsewhere I suspect.
 import json
 
+
+# TODO: Find out documented limits on max workers etc. In some of our tests we will attempt to exceed that.
+#         Try different configurations of min, max (spare) workers etc.
+# TODO: UPDATE: My account indicates "0/20 Workers Deployed", strongly suggesting I have a limit of 20.
+
+
 load_dotenv()
 # This load_dotenv() will find the first .env file, moving up the directories.
 # The .env file will be at the project root, where it is protected from repo-addition by .gitignore
@@ -29,6 +35,24 @@ print(endpoints)
 ################  FETCH ALL AVAILABLE GPUs  ################
 gpus = runpod.get_gpus()
 print(json.dumps(gpus, indent=2))
+# EXAMPLE RETURN FOR GPUs - ACTUAL LIST IS MUCH LONGER
+# [
+#     {
+#     "id": "AMD Instinct MI300X OAM",
+#     "displayName": "MI300X",
+#     "memoryInGb": 192
+#     },
+#     {
+#     "id": "NVIDIA A100 80GB PCIe",
+#     "displayName": "A100 PCIe",
+#     "memoryInGb": 80
+#     },
+#     {
+#     "id": "NVIDIA A100-SXM4-80GB",
+#     "displayName": "A100 SXM",
+#     "memoryInGb": 80
+#     },
+# ]
 
 
 ################  CREATE TEMPLATE  ################
@@ -38,7 +62,7 @@ try:
         image_name="runpod/base:0.1.0",
     )
     print(new_template)
-    # RETURN FOR SUCCESSFUL TEMPLATE CREATION
+    # EXAMPLE RETURN FOR SUCCESSFUL TEMPLATE CREATION
     # {
     #     'id': 'bdbtve7cas',
     #     'name': 'stretchy-rputil-test',
@@ -65,6 +89,7 @@ try:
         is_serverless=True,
     )
     print(new_template)
+    # SEE ABOVE FOR EXAMPLE RETURN
 
     new_endpoint = runpod.create_endpoint(
         name="stretchy-rputil-test--endpoint-1",
@@ -74,6 +99,20 @@ try:
         workers_max=1,
     )
     print(new_endpoint)
+    # EXAMPLE RETURN FOR SUCCESSFUL ENDPOINT CREATION
+    # {
+    #     'id': 'vf6ghygvsptrzs',
+    #     'name': 'stretchy-rputil-test--endpoint-1',
+    #     'templateId': '7uqbs86e0r',
+    #     'gpuIds': 'AMPERE_16',
+    #     'networkVolumeId': None,
+    #     'locations': None,
+    #     'idleTimeout': 5,
+    #     'scalerType': 'QUEUE_DELAY',
+    #     'scalerValue': 4,
+    #     'workersMin': 0,
+    #     'workersMax': 1,
+    # }
 
 except runpod.error.QueryError as err:
     print(err)
@@ -92,12 +131,6 @@ print(json.dumps(gpus, indent=2))
 
 gpus = runpod.get_gpu("NVIDIA GeForce RTX 4090")
 print(json.dumps(gpus, indent=2))
-
-
-
-
-
-
 
 
 ##

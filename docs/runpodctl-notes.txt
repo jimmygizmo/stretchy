@@ -1,0 +1,15 @@
+
+SET API KEY
+Looks like I successfully did this:
+
+(ve.stretchy) user@host:~/repos/stretchy$ runpodctl config --apiKey rpa_8C5DJ1ITECIJU8BX9O5HO7VT2TJA99ZHRE1591HM4xp3dw
+Configuration saved to file: /home/bilbo/.runpod/config.toml
+No existing local SSH key found, generating a new one.
+SSH key pair generated: /home/bilbo/.runpod/ssh/RunPod-Key-Go (private), /home/bilbo/.runpod/ssh/RunPod-Key-Go.pub (public)
+New SSH key pair generated.
+SSH key added successfully to the cloud.
+(ve.stretchy) bilbo@forest:~/repos/stretchy$
+
+
+
+

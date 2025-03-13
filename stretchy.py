@@ -48,7 +48,7 @@ def generate_load(url, cpu_load, io_load, network_latency, database_queries, req
 
 
 if __name__ == "__main__":
-    target_url = "http://your-load-agent-url:5000/stress"
+    target_url = "https://api.runpod.ai/v2/norx0cd12ei4ap/run"
 
     # Randomize load levels for variety in testing
     cpu_load = random.randint(1, 100)
