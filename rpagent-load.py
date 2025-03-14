@@ -7,19 +7,14 @@ import threading
 import time
 
 
-# TODO: "LOAD" in the filename indicates this will use thread spawning to allow the
-#           client to multiplex and load the endpoint to force it to spawn more workers, up to the max.
-#           We can take different load strategies, but just having some delay/duration to the jobs and then having
-#           simultaneous jobs is all we need to do to cause the endpoint to expand its workers (in theory.)
-
-simultaneous_clients = 10  # Int count of parallel clients
-startup_delay_range = 4000  # miliseconds. Minimum is 100 ms delay, up to this many milliseconds delay.
+simultaneous_clients = 12  # Int count of parallel clients
+startup_delay_range = 8000  # miliseconds. Minimum is 100 ms delay, up to this many milliseconds delay.
 
 load_dotenv()
 runpod_api_key = os.getenv("STRETCHYKEY")
 runpod.api_key = runpod_api_key
 
-endpoint_id = "eo8uv310z6pt2c"  # The dynamically-generated ID, from the time of endpoint creation
+endpoint_id = "26l5fgd0x8pugz"  # The dynamically-generated ID, from the time of endpoint creation
 
 input_payload = {"prompt": "Hello, World! This is the prompt payload."}
 
@@ -36,12 +31,14 @@ def health_check():
 
 
 # ################  SYNCHRONOUS (BLOCKING/SIMPLE) RUN ################
-def run_synchronous():
-    time.sleep(random.randint(100, startup_delay_range))
+def run_synchronous(thread_id):
+    rand_start_delay_seconds = random.randint(100, startup_delay_range)/1000
+    print(f"#### Starting endpoint.run_sync thread. ID: {thread_id}   Start-delay: {rand_start_delay_seconds} seconds")
+    time.sleep(random.randint(100, startup_delay_range)/1000)
     try:
         run_request = endpoint.run_sync(
             {
-                "prompt": "Hello, world!",
+                "prompt": f"job input (prompt) from rpagent-load, thread: {thread_id}",
             },
             timeout=60,  # Timeout in seconds.
         )
@@ -57,8 +54,8 @@ def main():
 
     load_threads = []
 
-    for _ in range(simultaneous_clients):
-        thread = threading.Thread(target=run_synchronous, args=())
+    for x in range(simultaneous_clients):
+        thread = threading.Thread(target=run_synchronous, args=(x,))
         thread.start()
         load_threads.append(thread)
 
@@ -70,10 +67,6 @@ if __name__ == "__main__":
 
 ##
 #
-
-
-# TODO: Continue more examples on this page:
-# https://docs.runpod.io/sdks/python/endpoints
 
 
 # Python Asyncio

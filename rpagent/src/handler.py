@@ -11,10 +11,21 @@ from runpod import RunPodLogger
 from runpod.serverless.modules import rp_http
 
 
-MOCK_RETURN_DEFAULT = os.environ.get('MOCK_RETURN', ['Hello World!'])
-MOCK_DELAY_DEFAULT = os.environ.get('MOCK_DELAY', 0)
-MOCK_PROGRESS_DEFAULT = os.environ.get('MOCK_PROGRESS', {})
-
+MOCK_RETURN_DEFAULT = os.environ.get('MOCK_RETURN', [
+            'a beautiful high resolution image of the sunset',
+            'a beautiful abstract drawing of the sunset in pastel colors',
+            'a beautiful, award-winning image of the sunset over rolling green hills',
+            'a masterpiece painting of the sunset over green hillsides. vibrant colors',
+        ]
+    )
+MOCK_DELAY_DEFAULT = os.environ.get('MOCK_DELAY', 1)
+MOCK_PROGRESS_DEFAULT = os.environ.get('MOCK_PROGRESS', [
+            'Phase 1/4: SD initializing (MOCK)',
+            'Phase 2/4: CLIP encoder running (MOCK)',
+            'Phase 3/4: Diffusion model running (MOCK)',
+            'Phase 4/4: VAE generating image',
+        ]
+    )
 MOCK_ERROR_DEFAULT = os.environ.get('MOCK_ERROR', False)
 MOCK_CRASH_DEFAULT = os.environ.get('MOCK_CRASH', False)
 MOCK_REFRESH_DEFAULT = os.environ.get('MOCK_REFRESH', False)
@@ -84,6 +95,8 @@ async def async_generator_handler(job):
 
     # Prepare the job output
     job_output = job_input.get('mock_return', MOCK_RETURN_DEFAULT)
+    print("DEBUG:")
+    print(job_output)
 
     for output in job_output:
         await asyncio.sleep(job_input.get('mock_delay', MOCK_DELAY_DEFAULT))

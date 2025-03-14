@@ -39,12 +39,12 @@ try:
         name="stretchy-rpagent--endpoint-p1",
         template_id=new_template["id"],
         gpu_ids="AMPERE_16",
-        # scaler_type="QUEUE_DELAY",
-        # scaler_value=2,
-        scaler_type="REQUEST_COUNT",
-        scaler_value=2,
-        workers_min=3,
-        workers_max=20,
+        scaler_type="QUEUE_DELAY",
+        scaler_value=10,
+        # scaler_type="REQUEST_COUNT",
+        # scaler_value=6,
+        workers_min=1,
+        workers_max=3,
     )
     print(new_endpoint)
 

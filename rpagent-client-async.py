@@ -17,9 +17,22 @@ load_dotenv()
 runpod_api_key = os.getenv("STRETCHYKEY")
 runpod.api_key = runpod_api_key
 
-endpoint_id = "408ash2u9pmz6i"  # The dynamically-generated ID, from the time of endpoint creation
+endpoint_id = "26l5fgd0x8pugz"  # The dynamically-generated ID, from the time of endpoint creation
 
-input_payload = {"prompt": "Hello, World! This is the prompt payload."}
+# input_payload = {"prompt": "Hello, World! This is the prompt payload."}
+
+# NOTE: Passing this mock_return like this does get to the correct place in the rpagent async_generator_handler
+#           although I am not seeing anything but an empty array in the response, but that could be other factors.
+input_payload = {
+    "prompt": "Hello, World! This is the prompt payload.",
+    "mock_delay": 1,
+    "mock_return": [
+            'a beautiful high resolution image of the sunset',
+            'a beautiful abstract drawing of the sunset in pastel colors',
+            'a beautiful, award-winning image of the sunset over rolling green hills',
+            'a masterpiece painting of the sunset over green hillsides. vibrant colors',
+        ],
+}
 
 
 async def main():
