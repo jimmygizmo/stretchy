@@ -1,0 +1,3 @@
+This /jobui/ is the React frontend app to a prototype app for generating images with SD.
+The backend is /jobdeck/ and it is a Python FastAPI app which will talk to a Stable Diffusion RunPod endpoint.
+

@@ -1,0 +1,23 @@
+
+
+
+RUN DEV SERVER:
+docker run -p 5000:5000 jimmygizmo/gizmorepo:stretchy-stabled
+
+
+
+TEST WITH CURL POST:
+curl -X POST http://localhost:5000/generate \
+    -H "Content-Type: application/json" \
+    -d '{"prompt": "A beautiful forest at sunset"}'
+
+
+
+TROUBLESHOOTING - BASH SHELL
+docker run -it jimmygizmo/gizmorepo:stretchy-stabled bash
+
+
+
+
+
+

@@ -1,6 +1,12 @@
 # STRETCHYAGENT requirements.txt
 
 
+torch
+torchvision
+torchaudio
+transformers
+diffusers
+diffusers[torch]
 flask
 
 

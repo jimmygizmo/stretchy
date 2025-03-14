@@ -14,7 +14,7 @@ echo
 
 
 # Secret (like an API key) for "stabled"
-cp -pv nogit/secret-stabled.txt stabled/
+cp -pv nogit/models/* stabled/builder/models/
 
 
 ##

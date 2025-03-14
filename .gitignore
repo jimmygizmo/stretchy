@@ -7,6 +7,15 @@
 
 nogit/*
 !nogit/.gitkeep
+nogit/models/*
+!nogit/models/.gitkeep
+
+
+# Models may get copied into place during builds, but we don't want them accidentally added to the repo as a result.
+stabled/builder/models/*
+!stabled/builder/models/.nogit
+# Specifically, Stable Diffusion 2.1:
+# v2-1_768-ema-pruned.safetensors
 
 
 # This may get copied into place during builds, but we don't want it accidentally added to the repo as a result.
@@ -17,6 +26,9 @@ rpagent/secret-rpagent.txt
 stretchyagent/secret-stretchyagent.txt
 
 
+# Just in case the node-provided .gitignore fails us:
+/node_modules
+node_modules/
 
 
 # Byte-compiled / optimized / DLL files

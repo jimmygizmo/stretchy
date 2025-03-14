@@ -1,0 +1,3 @@
+This /jobdeck/ is the FastAPI backend to a prototype React app (/jobui/) for generating images with SD.
+This Python backend will connect to a RunPod Stable Diffusion endpoint.
+

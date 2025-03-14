@@ -11,15 +11,17 @@ load_dotenv()
 runpod_api_key = os.getenv("STRETCHYKEY")
 runpod.api_key = runpod_api_key
 
+
 env_dict = {
-    "MOCK_RETURN": "This is the mock return value. This will be the job output.",
+    "SOME_ENV_VAR": "some value for some env var",
 }
+
 
 try:
     new_template = runpod.create_template(
-        name="stretchy-rpagent--template-p1",
-        # image_name="docker.io/runpod/stable-diffusion:web-automatic-8.0.3",
-        image_name="docker.io/jimmygizmo/gizmorepo:stretchy-rpagent",
+        name="stretchy--curated-stabled--template-p1",
+        image_name="docker.io/runpod/stable-diffusion:web-automatic-8.0.3",
+        # image_name="docker.io/jimmygizmo/gizmorepo:stretchy-rpagent",
         # image_name="docker.io/jimmygizmo/gizmorepo:stretchy-stretchyagent",
         is_serverless=True,
         env=env_dict,
@@ -34,15 +36,16 @@ try:
     # REQUEST_COUNT    scaling strategy adjusts worker numbers according to total requests in the queue and in progress.
     # It automatically adds workers as the number of requests increases, ensuring tasks are handled efficiently.
     new_endpoint = runpod.create_endpoint(
-        name="stretchy-rpagent--endpoint-p1",
+        name="stretchy--curated-stabled--endpoint-p1",
         template_id=new_template["id"],
+        # gpu_ids="NVIDIA GeForce RTX 4090",  ## For some reason this does not work, but AMPERE_16 will get you a 4090 or maybe an A5000
         gpu_ids="AMPERE_16",
         scaler_type="QUEUE_DELAY",
         scaler_value=10,
         # scaler_type="REQUEST_COUNT",
         # scaler_value=6,
         workers_min=1,
-        workers_max=3,
+        workers_max=2,
     )
     print(new_endpoint)
 

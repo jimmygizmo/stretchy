@@ -1,0 +1,9 @@
+# STRETCHYAGENT requirements.txt
+
+
+flask
+
+
+##
+#
+

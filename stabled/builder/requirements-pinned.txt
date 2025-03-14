@@ -1,0 +1,11 @@
+
+
+# This is a theoretical list provided by AI and said to be version compatible with the CUDA 11.8 we should be
+# using here. I have not worked with the versions or tested the build yet so all this is tentative.
+torch==2.1.0+cu118
+torchvision==0.15.0+cu118
+torchaudio==2.1.0
+transformers==4.30.0
+diffusers==0.18.0
+flask==2.3.2
+

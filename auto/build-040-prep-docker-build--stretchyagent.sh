@@ -9,11 +9,11 @@ echo "################################"
 echo
 
 printf "\n############################################################\n"
-printf "\nCOPYING SECRETS FOR STETCHYAGENT\n"
+printf "\nCOPYING SECRETS FOR STRETCHYAGENT\n"
 echo
 
 
-# Secret (like an API key) for "rpagent"
+# Secret (like an API key) for "stretchyagent"
 cp -pv nogit/secret-stretchyagent.txt stretchyagent/
 
 
