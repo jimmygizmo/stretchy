@@ -1,0 +1,11 @@
+
+
+start the fastapi server:
+
+uvicorn main:app --reload
+
+
+
+When a container is ready, running from it might look like this:
+docker run -p 5000:5000 jimmygizmo/gizmorepo:stretchy-jobdeck
+

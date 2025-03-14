@@ -1,13 +1,15 @@
-
 import React, { useState } from 'react';
 import axios from 'axios';
 import './App.css'; // We'll add custom styles for the dark theme
-
 
 function App() {
   const [prompt, setPrompt] = useState('');
   const [state, setState] = useState('default'); // 'default', 'waiting', 'completed', 'error'
   const [result, setResult] = useState('');
+
+  const sleep = (ms) => {
+    return new Promise(resolve => setTimeout(resolve, ms));
+  };
 
   const handleSubmit = async () => {
     if (!prompt) return;
@@ -17,7 +19,7 @@ function App() {
     try {
       // Send the prompt to the backend (FastAPI)
       const response = await axios.post('http://localhost:8000/start-job', { prompt });
-      const jobId = response.data.job_id;
+      const jobId = response.data.id;
 
       // Start polling for job status
       pollJobStatus(jobId);
@@ -27,16 +29,23 @@ function App() {
     }
   };
 
-
   const pollJobStatus = async (jobId) => {
     try {
       let jobComplete = false;
       while (!jobComplete) {
         const response = await axios.get(`http://localhost:8000/job-status/${jobId}`);
-        if (response.data.status === 'completed') {
+
+        if (response.data.status === 'COMPLETED') {
           setState('completed');
-          setResult(response.data.result);
+          setResult(response.data.output[0].image);
           jobComplete = true;
+        } else if (response.data.status === 'ERROR') {
+          setState('error');
+          console.error('Job encountered an error:', response.data.error);
+          jobComplete = true;
+        } else {
+          // Delay for 2 seconds before polling again to avoid too many requests
+          await sleep(2000);
         }
       }
     } catch (error) {
@@ -44,7 +53,6 @@ function App() {
       console.error('Error polling job status:', error);
     }
   };
-
 
   return (
     <div className="App">
@@ -65,7 +73,6 @@ function App() {
     </div>
   );
 }
-
 
 export default App;
 

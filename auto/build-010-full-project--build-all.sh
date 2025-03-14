@@ -22,7 +22,7 @@ echo "---->  PREPARING TO BUILD STABLED"
 
 
 echo
-echo "---->  PREPARING TO BUILD STETCHYAGENT"
+echo "---->  PREPARING TO BUILD STRETCHYAGENT"
 ./auto/build-040-prep-docker-build--stretchyagent.sh
 
 
@@ -37,7 +37,7 @@ echo "---->  BUILDING + TAGGING STABLED"
 
 
 echo
-echo "---->  BUILDING + TAGGING STETCHYAGENT"
+echo "---->  BUILDING + TAGGING STRETCHYAGENT"
 ./auto/build-060-docker-build-tag--stretchyagent.sh
 
 

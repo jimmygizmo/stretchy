@@ -20,8 +20,8 @@ env_dict = {
 try:
     new_template = runpod.create_template(
         name="stretchy--curated-stabled--template-p1",
-        image_name="docker.io/runpod/stable-diffusion:web-automatic-8.0.3",
-        # image_name="docker.io/jimmygizmo/gizmorepo:stretchy-rpagent",
+        # image_name="docker.io/runpod/stable-diffusion:web-automatic-8.0.3",  # Not what we want. Realize this is not API, but for browser usage. It does deploy/run but never accessed it.
+        image_name="docker.io/jimmygizmo/gizmorepo:stretchy-stabled",
         # image_name="docker.io/jimmygizmo/gizmorepo:stretchy-stretchyagent",
         is_serverless=True,
         env=env_dict,

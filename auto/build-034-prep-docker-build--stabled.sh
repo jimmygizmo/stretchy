@@ -9,12 +9,12 @@ echo "################################"
 echo
 
 printf "\n############################################################\n"
-printf "\nCOPYING SECRETS FOR STABLED\n"
+printf "\nCOPYING MODELS FOR STABLED\n"
 echo
 
 
-# Secret (like an API key) for "stabled"
-cp -pv nogit/models/* stabled/builder/models/
+# DISABLED. Not currently copying in a local model or models.
+#cp -pv nogit/models/* stabled/builder/models/
 
 
 ##
